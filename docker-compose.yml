@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  pdfapp:
+    image: ${DOCKER_REGISTRY-}pdfapp
+    build:
+      context: .
+      dockerfile: PdfApp/Dockerfile
