@@ -1,43 +1,79 @@
-var builder = WebApplication.CreateBuilder(args);
+using FluentValidation;
+using FluentValidation.Results;
+using PdfApp.Contracts.Request;
+using PdfApp.Contracts.Response;
+using PdfApp.Infrastructure.Extensions;
+using PdfApp.Rest.ServiceCollection;
+using System;
+using System.Linq.Expressions;
+using WkHtmlToPdfDotNet;
+using WkHtmlToPdfDotNet.Contracts;
+using Serilog;
+using Microsoft.Extensions.Logging;
+using PdfApp.Infrastructure.Errors;
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .CreateBootstrapLogger();
 
-var app = builder.Build();
+Log.Information("Starting up");
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+try
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    var builder = WebApplication.CreateBuilder(args);
+
+    builder.Host.UseSerilog((ctx, lc) => lc
+        .WriteTo.Console()
+        .ReadFrom.Configuration(ctx.Configuration));
+
+    // Add services to the container.
+    // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSwaggerGen();
+
+    builder.Services.RegisterServices();
+
+    var app = builder.Build();
+
+    app.UseSerilogRequestLogging();
+
+    // Configure the HTTP request pipeline.
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
+
+    app.ConfigureCustomExceptionMiddleware();
+
+    app.UseHttpsRedirection();
+
+    app.MapPost("/", (HttpRequest request, PdfInput input, IValidator<PdfInput> validator, ILoggerFactory loggerFactory) =>
+    {
+        var logger = loggerFactory.CreateLogger("home");
+
+        ValidationResult validationResult = validator.Validate(input);
+        if (!validationResult.IsValid)
+        {
+            throw new RequestValidationError(validationResult.Errors);
+        }
+
+        return Results.Ok(new Response<PdfOutput>
+        {
+            Data = new PdfOutput("hello", 50)
+        });
+    });
+
+    app.Run();
+} 
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Unhandled exception while bootstrapping application");
+}
+finally
+{
+    Log.Information("Shutting down...");
+    Log.CloseAndFlush();
 }
 
-app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateTime.Now.AddDays(index),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
-
-app.Run();
-
-internal record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
