@@ -2,7 +2,10 @@
 using WkHtmlToPdfDotNet;
 using FluentValidation;
 using PdfApp.Contracts.Request;
-using PdfApp.Core.Validators;
+using Ganss.Xss;
+using PdfApp.Application.Services;
+using PdfApp.Application.Abstractions.Application;
+using PdfApp.Application.Validators;
 
 namespace PdfApp.Rest.ServiceCollection
 {
@@ -10,8 +13,13 @@ namespace PdfApp.Rest.ServiceCollection
     {
         public static void RegisterServices(this IServiceCollection services)
         {
-            #region Services
+            #region Integration Services
             services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
+            services.AddScoped<IHtmlSanitizer>(x => new HtmlSanitizer());
+            #endregion
+
+            #region Services
+            services.AddScoped<IHtmlToPdfConvertService, HtmlToPdfConvertService>();
             #endregion
 
             #region Validations

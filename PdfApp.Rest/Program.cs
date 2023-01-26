@@ -1,16 +1,13 @@
 using FluentValidation;
 using FluentValidation.Results;
+using PdfApp.Application.Abstractions.Application;
+using PdfApp.Application.Errors;
+using PdfApp.Application.Models;
 using PdfApp.Contracts.Request;
 using PdfApp.Contracts.Response;
 using PdfApp.Infrastructure.Extensions;
 using PdfApp.Rest.ServiceCollection;
-using System;
-using System.Linq.Expressions;
-using WkHtmlToPdfDotNet;
-using WkHtmlToPdfDotNet.Contracts;
 using Serilog;
-using Microsoft.Extensions.Logging;
-using PdfApp.Infrastructure.Errors;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
@@ -48,7 +45,11 @@ try
 
     app.UseHttpsRedirection();
 
-    app.MapPost("/", (HttpRequest request, PdfInput input, IValidator<PdfInput> validator, ILoggerFactory loggerFactory) =>
+    app.MapPost("/", async (HttpRequest request, PdfInput input,
+        IValidator<PdfInput> validator,
+        ILoggerFactory loggerFactory,
+        IHtmlToPdfConvertService converterService
+        ) =>
     {
         var logger = loggerFactory.CreateLogger("home");
 
@@ -58,14 +59,16 @@ try
             throw new RequestValidationError(validationResult.Errors);
         }
 
+        var pdfByteArray = converterService.ConvertToPdf(input);
+
         return Results.Ok(new Response<PdfOutput>
         {
-            Data = new PdfOutput("hello", 50)
+            Data = new PdfOutput(Convert.ToBase64String(pdfByteArray), pdfByteArray.Length)
         });
     });
 
     app.Run();
-} 
+}
 catch (Exception ex)
 {
     Log.Fatal(ex, "Unhandled exception while bootstrapping application");

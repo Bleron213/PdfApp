@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace PdfApp.Contracts.Response
+namespace PdfApp.Application.Models
 {
     public class Response<T>
     {

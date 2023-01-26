@@ -2,7 +2,7 @@
 {
     public enum PageColorMode
     {
-        NoColor = 0,
+        Grayscale = 0,
         Color = 1,
     }
 }

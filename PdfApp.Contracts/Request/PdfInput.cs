@@ -10,7 +10,7 @@ namespace PdfApp.Contracts.Request
         public string? HtmlString { get; }
         public PdfOptions? Options { get; } = new PdfOptions
         {
-            PageColorMode = PageColorMode.NoColor,
+            PageColorMode = PageColorMode.Grayscale,
             PageOrientation = PageOrientation.Portrait,
             PagePaperSize = PagePaperSize.A4,
             PageMargins = new PageMargins

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using PdfApp.Infrastructure.Exceptions;
+using PdfApp.Infrastructure.Middlewares;
 using System;
 using System.Collections.Generic;
 using System.Linq;

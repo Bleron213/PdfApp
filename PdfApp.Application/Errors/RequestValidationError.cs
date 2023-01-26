@@ -6,7 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PdfApp.Infrastructure.Errors
+namespace PdfApp.Application.Errors
 {
     public class RequestValidationError : CustomError
     {

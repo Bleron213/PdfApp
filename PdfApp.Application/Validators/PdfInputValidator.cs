@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PdfApp.Core.Validators
+namespace PdfApp.Application.Validators
 {
     public class PdfInputValidator : AbstractValidator<PdfInput>
     {

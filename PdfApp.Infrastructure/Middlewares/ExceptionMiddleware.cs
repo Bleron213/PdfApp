@@ -1,18 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using PdfApp.Contracts.Response;
-using PdfApp.Infrastructure.Errors;
-using PdfApp.Infrastructure.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using PdfApp.Application.Errors;
+using PdfApp.Application.Models;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace PdfApp.Infrastructure.Exceptions
+namespace PdfApp.Infrastructure.Middlewares
 {
     public class ExceptionMiddleware
     {
