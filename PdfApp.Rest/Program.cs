@@ -1,11 +1,10 @@
-using FluentValidation;
-using FluentValidation.Results;
-using PdfApp.Application.Abstractions.Application;
-using PdfApp.Application.Errors;
-using PdfApp.Application.Models;
-using PdfApp.Contracts.Request;
-using PdfApp.Contracts.Response;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Authorization;
 using PdfApp.Infrastructure.Extensions;
+using PdfApp.Infrastructure.Identity;
+using PdfApp.Rest.Modules;
 using PdfApp.Rest.ServiceCollection;
 using Serilog;
 
@@ -28,6 +27,14 @@ try
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
 
+    builder.Services.AddAuthorization(o =>
+    {
+        o.AddPolicy("ApiKeyPolicy", p => p.AddRequirements(new ApiKeyRequirement()));
+    });
+
+    builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+    builder.Services.AddSingleton<IAuthorizationHandler, ApiKeyRequirementHandler>();
+
     builder.Services.RegisterServices();
 
     var app = builder.Build();
@@ -45,27 +52,12 @@ try
 
     app.UseHttpsRedirection();
 
-    app.MapPost("/", async (HttpRequest request, PdfInput input,
-        IValidator<PdfInput> validator,
-        ILoggerFactory loggerFactory,
-        IHtmlToPdfConvertService converterService
-        ) =>
-    {
-        var logger = loggerFactory.CreateLogger("home");
+    app.UseAuthentication();
+    app.UseAuthorization();
 
-        ValidationResult validationResult = validator.Validate(input);
-        if (!validationResult.IsValid)
-        {
-            throw new RequestValidationError(validationResult.Errors);
-        }
+    app.RegisterPdfModule();
 
-        var pdfByteArray = converterService.ConvertToPdf(input);
-
-        return Results.Ok(new Response<PdfOutput>
-        {
-            Data = new PdfOutput(Convert.ToBase64String(pdfByteArray), pdfByteArray.Length)
-        });
-    });
+    app.MapGet("/security/getMessage", () => "Hello World!").RequireAuthorization("ApiKeyPolicy");
 
     app.Run();
 }

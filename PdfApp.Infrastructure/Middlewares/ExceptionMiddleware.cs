@@ -49,7 +49,7 @@ namespace PdfApp.Infrastructure.Middlewares
 
                 response.Message = "Custom Error ocurred";
                 response.Errors.AddRange(customError.SerializeErrors());
-                response.StatusCode = (int)HttpStatusCode.BadRequest;
+                response.StatusCode = HttpStatusCode.BadRequest;
 
                 context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 await context.Response.WriteAsync(response.ToString());
@@ -57,7 +57,7 @@ namespace PdfApp.Infrastructure.Middlewares
             }
 
             response.Message = "Unexpected error ocurred";
-            response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            response.StatusCode = HttpStatusCode.InternalServerError;
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             await context.Response.WriteAsync(response.ToString());
 
