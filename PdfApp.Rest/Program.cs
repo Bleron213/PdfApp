@@ -1,9 +1,9 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
 using PdfApp.Infrastructure.Extensions;
-using PdfApp.Infrastructure.Identity;
+using PdfApp.Infrastructure.Identity.Constants;
+using PdfApp.Infrastructure.Identity.Handlers;
+using PdfApp.Infrastructure.Identity.Options;
+using PdfApp.Infrastructure.Identity.Requirements;
 using PdfApp.Rest.Modules;
 using PdfApp.Rest.ServiceCollection;
 using Serilog;
@@ -27,13 +27,23 @@ try
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
 
-    builder.Services.AddAuthorization(o =>
-    {
-        o.AddPolicy("ApiKeyPolicy", p => p.AddRequirements(new ApiKeyRequirement()));
-    });
-
     builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-    builder.Services.AddSingleton<IAuthorizationHandler, ApiKeyRequirementHandler>();
+    builder.Services.AddSingleton<IAuthorizationHandler, XKeyHeaderRequirementHandler>();
+
+    builder.Services
+        .AddAuthentication()
+        .AddScheme<ApiKeySchemeOptions, ApiKeySchemeAuthenticationHandler>(SchemeConstants.XKeyHeaderSchemeName, options => { });
+
+    builder.Services
+        .AddAuthorization(options =>
+        {
+            var headerXApiKeySchemePolicy = new AuthorizationPolicyBuilder()
+                .AddAuthenticationSchemes(SchemeConstants.XKeyHeaderSchemeName)
+                .RequireAuthenticatedUser()
+                .Build();
+
+            options.AddPolicy(PolicyConstants.HeaderXApiKeySchemePolicy, headerXApiKeySchemePolicy);
+        });
 
     builder.Services.RegisterServices();
 
@@ -56,8 +66,6 @@ try
     app.UseAuthorization();
 
     app.RegisterPdfModule();
-
-    app.MapGet("/security/getMessage", () => "Hello World!").RequireAuthorization("ApiKeyPolicy");
 
     app.Run();
 }

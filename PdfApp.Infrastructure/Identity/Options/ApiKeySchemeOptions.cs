@@ -5,8 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PdfApp.Infrastructure.Identity
+namespace PdfApp.Infrastructure.Identity.Options
 {
     public class ApiKeySchemeOptions : AuthenticationSchemeOptions
-    { }
+    {
+    }
 }

@@ -49,7 +49,7 @@ namespace PdfApp.Infrastructure.Middlewares
 
                 response.Message = "Custom Error ocurred";
                 response.Errors.AddRange(customError.SerializeErrors());
-                response.StatusCode = HttpStatusCode.BadRequest;
+                response.StatusCode = customError.StatusCode;
 
                 context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 await context.Response.WriteAsync(response.ToString());

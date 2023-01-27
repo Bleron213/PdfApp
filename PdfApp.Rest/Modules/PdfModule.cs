@@ -5,7 +5,7 @@ using PdfApp.Application.Errors;
 using PdfApp.Application.Models;
 using PdfApp.Contracts.Request;
 using PdfApp.Contracts.Response;
-using PdfApp.Rest.Filters;
+using PdfApp.Infrastructure.Identity.Constants;
 using System.Net;
 
 namespace PdfApp.Rest.Modules
@@ -39,7 +39,7 @@ namespace PdfApp.Rest.Modules
                     Succeeded = true,
                     StatusCode = HttpStatusCode.OK
                 }));
-            });
+            }).RequireAuthorization(PolicyConstants.HeaderXApiKeySchemePolicy);
         }
     }
 }
