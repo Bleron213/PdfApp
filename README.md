@@ -6,7 +6,7 @@
   <br>
 </h1>
 
-<h4 align="center"> A small Web API built using for converting HTML to PDF</h4>
+<h4 align="center"> A small Web API built for converting HTML to PDF</h4>
 
 <p align="center">
 
@@ -30,11 +30,18 @@ Clone the git application locally
 # Clone this repository
 $ git clone https://github.com/Bleron213/PdfApp
 
-# Open in Visual Studio 2022
-# Choose either a docker-compose start-up or a PdfApp.Rest
-# Consume the endpoints
+# Go into the repository
+$ cd pdfapp
+  
+# Run docker-compose
+$ docker-compose up
+  
+# View the application at
+https://localhost:7238/swagger/index.html
 ```
-Alternatively, you can use the dotnet command line, or start it using <i> docker-compose up </i>
+Alternatively, Load up the solution in Visual studio and choose either
+  - PdfApp.Rest
+  - docker-compose
 
 ## Credits
 
@@ -42,10 +49,10 @@ This software uses the following open source packages:
 
 - [.NET](https://github.com/dotnet)
 - [Fluent Validation](https://github.com/FluentValidation/FluentValidation)
-- [XUnit] (https://github.com/xunit/xunit)
+- [XUnit](https://github.com/xunit/xunit)
 - [Serilog](https://github.com/serilog/serilog)
 - [WkHtmlToPdf-DotNet](https://github.com/HakanL/WkHtmlToPdf-DotNet)
-- [wkhtmltopdf (internally)] (https://wkhtmltopdf.org/)
+- [wkhtmltopdf] (https://wkhtmltopdf.org/) (internally)
 - [HtmlSanitizer](https://github.com/mganss/HtmlSanitizer)
 
 ## Support
