@@ -12,15 +12,15 @@
 
 ## Key Features
 
-# ASP.NET 6.0 
-# Minimal API
-# Clean Architecture
-# Header Authentication and Authorization
-# Cross Platform
-# Global Exception Handling
-# Serilog integration
-# Client SDK 
-# Fully compliant with Dependency Injection
+* ASP.NET 6.0 
+* Minimal API
+* Clean Architecture
+* Header Authentication and Authorization
+* Cross Platform
+* Global Exception Handling
+* Serilog integration
+* Client SDK 
+* Fully compliant with Dependency Injection
 
 ## How To Use
 
