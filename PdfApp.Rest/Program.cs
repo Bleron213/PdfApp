@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
+using PdfApp.Infrastructure.Configurations;
 using PdfApp.Infrastructure.Extensions;
 using PdfApp.Infrastructure.Identity.Constants;
 using PdfApp.Infrastructure.Identity.Handlers;
@@ -7,6 +8,9 @@ using PdfApp.Infrastructure.Identity.Requirements;
 using PdfApp.Rest.Modules;
 using PdfApp.Rest.ServiceCollection;
 using Serilog;
+using MvcJsonOptions = Microsoft.AspNetCore.Mvc.JsonOptions;
+using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Http.Json;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
@@ -21,6 +25,13 @@ try
     builder.Host.UseSerilog((ctx, lc) => lc
         .WriteTo.Console()
         .ReadFrom.Configuration(ctx.Configuration));
+
+    var configuration = new Configuration();
+    builder.Configuration.Bind("Configurations", configuration);
+    builder.Services.AddSingleton(configuration);
+
+    builder.Services.Configure<JsonOptions>(o => o.SerializerOptions.Converters.Add(new JsonStringEnumConverter()));
+    builder.Services.Configure<MvcJsonOptions>(o => o.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
     // Add services to the container.
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -45,7 +56,7 @@ try
             options.AddPolicy(PolicyConstants.HeaderXApiKeySchemePolicy, headerXApiKeySchemePolicy);
         });
 
-    builder.Services.RegisterServices();
+    builder.Services.RegisterServices(configuration);
 
     var app = builder.Build();
 
@@ -65,8 +76,12 @@ try
     app.UseAuthentication();
     app.UseAuthorization();
 
+    // ENDPOINTS
+
     app.RegisterPdfModule();
 
+
+    // --- ///
     app.Run();
 }
 catch (Exception ex)

@@ -2,7 +2,8 @@
 {
     public enum PageOrientation
     {
-        Portrait = 0,
-        Landscape = 1
+        NotDefined = 0,
+        Portrait = 1,
+        Landscape = 2
     }
 }

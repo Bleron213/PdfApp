@@ -2,7 +2,8 @@
 {
     public enum PageColorMode
     {
-        Grayscale = 0,
-        Color = 1,
+        NotDefined = 0,
+        Grayscale = 1,
+        Color = 2,
     }
 }

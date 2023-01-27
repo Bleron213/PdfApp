@@ -41,21 +41,26 @@ namespace PdfApp.Application.Services
                         Left = input.Options.PageMargins.Left,
                         Right = input.Options.PageMargins.Right
                     }
-                },
+                    //Out = @"C:\Users\bbler\Desktop\test\test.pdf"
+                }, 
                 Objects =
                 {
                     new ObjectSettings
                     {
                         PagesCount = true,
                         HtmlContent = html,
-                        WebSettings = {DefaultEncoding = "utf-8"},
-                        HeaderSettings = { FontSize = 9, Right = "Page [page] of [toPage]", Line = true, Spacing = 2.812 }
+                        WebSettings = {
+                            DefaultEncoding = "utf-8",
+                            EnableJavascript = false
+                        },
+                        HeaderSettings = { FontSize = 9, Right = "Page [page] of [toPage]", Line = true, Spacing = 2.812 },
+                        Encoding = Encoding.UTF8,
+                        
                     }
                 },
             };
 
             return _converter.Convert(document);
-
         }
     }
 

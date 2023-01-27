@@ -2,6 +2,7 @@
 {
     public enum PagePaperSize
     {
-        A4 = 0
+        NotDefined = 0,
+        A4 = 1
     }
 }

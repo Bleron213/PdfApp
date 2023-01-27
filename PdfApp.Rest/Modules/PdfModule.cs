@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
+using Newtonsoft.Json;
 using PdfApp.Application.Abstractions.Application;
 using PdfApp.Application.Errors;
 using PdfApp.Application.Models;
@@ -24,21 +25,23 @@ namespace PdfApp.Rest.Modules
                 ) =>
             {
                 var logger = loggerFactory.CreateLogger(nameof(PdfModule));
+                logger.LogInformation("Entered {method}. POST: Params {input}", nameof(RegisterPdfModule), JsonConvert.SerializeObject(input));
 
                 ValidationResult validationResult = validator.Validate(input);
                 if (!validationResult.IsValid)
                 {
                     throw new RequestValidationError(validationResult.Errors);
                 }
-
                 var pdfByteArray = converterService.ConvertToPdf(input);
 
-                return Task.FromResult(Results.Ok(new Response<PdfOutput>
+                logger.LogInformation("Exiting {method}. POST", nameof(RegisterPdfModule));
+
+                return Results.Ok(new Response<PdfOutput>
                 {
                     Data = new PdfOutput(Convert.ToBase64String(pdfByteArray), pdfByteArray.Length),
                     Succeeded = true,
                     StatusCode = HttpStatusCode.OK
-                }));
+                });
             }).RequireAuthorization(PolicyConstants.HeaderXApiKeySchemePolicy);
         }
     }

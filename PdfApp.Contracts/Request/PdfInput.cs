@@ -8,23 +8,25 @@ namespace PdfApp.Contracts.Request
     public class PdfInput
     {
         public string? HtmlString { get; }
-        public PdfOptions? Options { get; } = new PdfOptions
-        {
-            PageColorMode = PageColorMode.Grayscale,
-            PageOrientation = PageOrientation.Portrait,
-            PagePaperSize = PagePaperSize.A4,
-            PageMargins = new PageMargins
-            {
-                Top = 10,
-                Bottom = 10,
-                Right = 10,
-                Left = 10
-            }
-        };
+        public PdfOptions? Options { get; } 
 
-        public PdfInput(string htmlString)
+        public PdfInput(string htmlString, PdfOptions options)
         {
             HtmlString = htmlString;
+            Options = options ?? new PdfOptions
+            {
+                PageColorMode = PageColorMode.Grayscale,
+                PageOrientation = PageOrientation.Portrait,
+                PagePaperSize = PagePaperSize.A4,
+            };
+
+            Options.PageMargins = options?.PageMargins ?? new PageMargins
+            {
+                Top = 0,
+                Bottom = 0,
+                Right = 0,
+                Left = 0
+            };
         }
     }
 
