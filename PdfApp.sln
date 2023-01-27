@@ -7,15 +7,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B9812E6B-03F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{735190B3-99F1-4FB1-A11A-129A02A00994}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfApp.Application", "PdfApp.Application\PdfApp.Application.csproj", "{04A83C70-F54C-4140-AB61-ACC3433F802D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PdfApp.Application", "PdfApp.Application\PdfApp.Application.csproj", "{04A83C70-F54C-4140-AB61-ACC3433F802D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfApp.Domain", "PdfApp.Domain\PdfApp.Domain.csproj", "{C2203E39-97CA-49B0-AB9F-85E767316E4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PdfApp.Domain", "PdfApp.Domain\PdfApp.Domain.csproj", "{C2203E39-97CA-49B0-AB9F-85E767316E4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfApp.Infrastructure", "PdfApp.Infrastructure\PdfApp.Infrastructure.csproj", "{217FE8D6-618F-4195-95B2-313C7FD6688B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PdfApp.Infrastructure", "PdfApp.Infrastructure\PdfApp.Infrastructure.csproj", "{217FE8D6-618F-4195-95B2-313C7FD6688B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfApp.Rest", "PdfApp.Rest\PdfApp.Rest.csproj", "{4D669677-66B3-4670-B9DA-9C5F94644865}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PdfApp.Rest", "PdfApp.Rest\PdfApp.Rest.csproj", "{4D669677-66B3-4670-B9DA-9C5F94644865}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfApp.Contracts", "PdfApp.Contracts\PdfApp.Contracts.csproj", "{94DE267C-67AE-4403-9E09-D4E1E2AF88EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PdfApp.Contracts", "PdfApp.Contracts\PdfApp.Contracts.csproj", "{94DE267C-67AE-4403-9E09-D4E1E2AF88EE}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{A433D532-FF18-4D57-AD28-A0AD6D9E66FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{94DE267C-67AE-4403-9E09-D4E1E2AF88EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94DE267C-67AE-4403-9E09-D4E1E2AF88EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94DE267C-67AE-4403-9E09-D4E1E2AF88EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A433D532-FF18-4D57-AD28-A0AD6D9E66FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A433D532-FF18-4D57-AD28-A0AD6D9E66FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A433D532-FF18-4D57-AD28-A0AD6D9E66FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A433D532-FF18-4D57-AD28-A0AD6D9E66FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

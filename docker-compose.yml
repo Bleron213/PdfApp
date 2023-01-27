@@ -1,8 +1,8 @@
 version: '3.4'
 
 services:
-  pdfapp:
-    image: ${DOCKER_REGISTRY-}pdfapp
+  pdfapp.rest:
+    image: ${DOCKER_REGISTRY-}pdfapprest
     build:
       context: .
-      dockerfile: PdfApp/Dockerfile
+      dockerfile: PdfApp.Rest/Dockerfile
