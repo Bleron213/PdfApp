@@ -53,7 +53,7 @@ This software uses the following open source packages:
 - [XUnit](https://github.com/xunit/xunit)
 - [Serilog](https://github.com/serilog/serilog)
 - [WkHtmlToPdf-DotNet](https://github.com/HakanL/WkHtmlToPdf-DotNet)
-- [wkhtmltopdf] (https://wkhtmltopdf.org/) (internally)
+- [wkhtmltopdf](https://wkhtmltopdf.org/) (internally)
 - [HtmlSanitizer](https://github.com/mganss/HtmlSanitizer)
 
 ## Support
