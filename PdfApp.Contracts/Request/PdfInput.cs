@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using PdfApp.Contracts.Enums;
-
-namespace PdfApp.Contracts.Request
+﻿namespace PdfApp.Contracts.Request
 {
     public class PdfInput
     {
@@ -15,9 +10,9 @@ namespace PdfApp.Contracts.Request
             HtmlString = htmlString;
             Options = options ?? new PdfOptions
             {
-                PageColorMode = PageColorMode.Grayscale,
-                PageOrientation = PageOrientation.Portrait,
-                PagePaperSize = PagePaperSize.A4,
+                PageColorMode = "Grayscale",
+                PageOrientation = "Portrait",
+                PagePaperSize = "A4",
             };
 
             Options.PageMargins = options?.PageMargins ?? new PageMargins
@@ -35,9 +30,9 @@ namespace PdfApp.Contracts.Request
     /// </summary>
     public class PdfOptions
     {
-        public PageColorMode PageColorMode { get; set; }
-        public PageOrientation PageOrientation { get; set; }
-        public PagePaperSize PagePaperSize { get; set; }
+        public string PageColorMode { get; set; }
+        public string PageOrientation { get; set; }
+        public string PagePaperSize { get; set; }
         public PageMargins? PageMargins { get; set; } 
     }
 

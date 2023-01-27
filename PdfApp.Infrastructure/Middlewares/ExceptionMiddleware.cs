@@ -36,6 +36,7 @@ namespace PdfApp.Infrastructure.Middlewares
             _logger.LogError(exception, "Error in Custom Middleware");
 
             var response = new Response<string>();
+
             if (_hostingEnv.IsDevelopment())
             {
                 response.Errors.Add(new KeyValuePair<string, string>("Exception", exception.ToString()));
@@ -54,6 +55,15 @@ namespace PdfApp.Infrastructure.Middlewares
                 context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 await context.Response.WriteAsync(response.ToString());
                 return;
+            }
+
+            if (exception is BadHttpRequestException)
+            {
+                response.Message = "A BadRequest was received";
+                response.StatusCode = HttpStatusCode.BadRequest;
+                await context.Response.WriteAsync(response.ToString());
+                return;
+
             }
 
             response.Message = "Unexpected error ocurred";

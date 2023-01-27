@@ -1,12 +1,7 @@
 ﻿using FluentValidation;
-using PdfApp.Contracts.Enums;
+using Newtonsoft.Json.Linq;
 using PdfApp.Contracts.Request;
-using System;
-using System.Buffers.Text;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using WkHtmlToPdfDotNet;
 
 namespace PdfApp.Application.Validators
 {
@@ -39,22 +34,25 @@ namespace PdfApp.Application.Validators
                 .WithMessage(x => $"{nameof(PdfInput.Options)} must not be null");
 
             RuleFor(x => x.Options.PageColorMode)
-                .IsInEnum()
-                .WithMessage(x => $"{nameof(PdfInput.Options.PageColorMode)} must be defined in Enum")
-                .NotEqual(PageColorMode.NotDefined)
-                .WithMessage(x => $"{nameof(PdfInput.Options.PageColorMode)} must not be undefined");
+                .NotNull()
+                .NotEmpty()
+                .WithMessage(x => $"{nameof(PdfInput.Options.PageColorMode)} must not be null or empty")
+                .Must(value => Enum.TryParse<ColorMode>(value, out _))
+                .WithMessage(x => $"Value of property is not assigned to {nameof(ColorMode)} enum");
 
             RuleFor(x => x.Options.PageOrientation)
-                .IsInEnum()
-                .WithMessage(x => $"{nameof(PdfInput.Options.PageOrientation)} must be defined in Enum")
-                .NotEqual(PageOrientation.NotDefined)
-                .WithMessage(x => $"{nameof(PdfInput.Options.PageOrientation)} must not be undefined");
+                .NotNull()
+                .NotEmpty()
+                .WithMessage(x => $"{nameof(PdfInput.Options.PageOrientation)} must not be null or empty")
+                .Must(value => Enum.TryParse<Orientation>(value, out _))
+                .WithMessage(x => $"Value of property is not assigned to {nameof(Orientation)} enum");
 
             RuleFor(x => x.Options.PagePaperSize)
-                .IsInEnum()
-                .WithMessage(x => $"{nameof(PdfInput.Options.PagePaperSize)} must be defined in Enum")
-                .NotEqual(PagePaperSize.NotDefined)
-                .WithMessage(x => $"{nameof(PdfInput.Options.PagePaperSize)} must not be undefined");
+                .NotNull()
+                .NotEmpty()
+                .WithMessage(x => $"{nameof(PdfInput.Options.PagePaperSize)} must not be null or empty")
+                .Must(value => Enum.TryParse<PaperKind>(value, out _))
+                .WithMessage(x => $"Value of property is not assigned to {nameof(PaperKind)} enum");
         }
     }
 }
