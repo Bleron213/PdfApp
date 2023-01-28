@@ -1,42 +1,61 @@
-# Interview Assignment
 
-### Introduction
+<h1 align="center">
+  <br>
+  <br>
+    PdfApp
+  <br>
+</h1>
 
-In this assignment you'll be creating a PDF generation API. This API needs to be able to convert HTML into a PDF document. 
+<h4 align="center"> A small Web API built for converting HTML to PDF</h4>
 
-> ***NOTE*** Please read this entire document before starting the assignment
+<p align="center">
 
-**Functional requirements**
+## Key Features
 
-- JSON input & ouput
-- Input validation
-- API Key validation:
-  - API should be call with the following header: X-API-KEY: 7a8a7cd837b042b58b56617114f4d3d7
+* ASP.NET 6.0 
+* Minimal API
+* Clean Architecture
+* Header Authentication and Authorization
+* Cross Platform
+* Global Exception Handling
+* Serilog integration
+* Client SDK 
+* Fully compliant with Dependency Injection
+* Integration tested with Builder pattern
 
-- Input requirements
-  - Html to convert (Base64 encoded)
-  - Page Orientation
-  - Page ColorMode
-  - Page PaperSize
-  - Page Margins
-- Output requirements
-  - PDF Document (Base64 encoded)
-  - PDF Document size
+## How To Use
 
-**Technical requirements**
+Clone the git application locally
 
-- .NET 6
-- .NET Dependency Injection
-- .NET minimal API: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis?view=aspnetcore-6.0
-- Docker Support
-- Clean architecture
-- Use NuGet package: https://www.nuget.org/packages/Haukcode.WkHtmlToPdfDotNet
+```bash
+# Clone this repository
+$ git clone https://github.com/Bleron213/PdfApp
 
-**Getting Started**
+# Go into the repository
+$ cd pdfapp
+  
+# Run docker-compose
+$ docker-compose up
+  
+# View the application at
+https://localhost:7238/swagger/index.html
+```
+Alternatively, Load up the solution in Visual studio and choose either
+  - PdfApp.Rest
+  - docker-compose
 
-Attached to this assignment you'll find two things:
+## Credits
 
-- A starter solution with some boilerplate code (possibly contains bugs)
-- A Postman collection to test the application
+This software uses the following open source packages:
 
-***Good luck!***
+- [.NET](https://github.com/dotnet)
+- [Fluent Validation](https://github.com/FluentValidation/FluentValidation)
+- [XUnit](https://github.com/xunit/xunit)
+- [Serilog](https://github.com/serilog/serilog)
+- [WkHtmlToPdf-DotNet](https://github.com/HakanL/WkHtmlToPdf-DotNet)
+- [wkhtmltopdf](https://wkhtmltopdf.org/) (internally)
+- [HtmlSanitizer](https://github.com/mganss/HtmlSanitizer)
+
+## Support
+
+You could hire me :)
