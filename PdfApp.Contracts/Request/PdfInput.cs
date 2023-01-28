@@ -5,7 +5,7 @@
         public string? HtmlString { get; }
         public PdfOptions? Options { get; } 
 
-        public PdfInput(string htmlString, PdfOptions options)
+        public PdfInput(string htmlString, PdfOptions? options = null)
         {
             HtmlString = htmlString;
             Options = options ?? new PdfOptions

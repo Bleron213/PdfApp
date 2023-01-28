@@ -20,6 +20,12 @@ namespace PdfApp.Application.Services
 
         public byte[] ConvertToPdf(PdfInput input)
         {
+            // Prevent possible null reference exceptions
+            ArgumentNullException.ThrowIfNull(input);
+            ArgumentNullException.ThrowIfNull(input.HtmlString);
+            ArgumentNullException.ThrowIfNull(input.Options);
+            ArgumentNullException.ThrowIfNull(input.Options.PageMargins);
+
             // Decode html from base64
             var html = Encoding.UTF8.GetString(Convert.FromBase64String(input.HtmlString));
 
@@ -41,7 +47,6 @@ namespace PdfApp.Application.Services
                         Left = input.Options.PageMargins.Left,
                         Right = input.Options.PageMargins.Right
                     }
-                    //Out = @"C:\Users\bbler\Desktop\test\test.pdf"
                 }, 
                 Objects =
                 {

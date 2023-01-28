@@ -11,6 +11,8 @@ using Serilog;
 using MvcJsonOptions = Microsoft.AspNetCore.Mvc.JsonOptions;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http.Json;
+using Microsoft.Extensions.Options;
+using System.Net;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
@@ -80,8 +82,6 @@ try
     // ENDPOINTS
 
     app.RegisterPdfModule();
-
-    app.MapGet("/hello", () => "Hello world");
 
     // --- ///
     app.Run();

@@ -29,9 +29,8 @@ namespace PdfApp.Rest.Modules
 
                 ValidationResult validationResult = validator.Validate(input);
                 if (!validationResult.IsValid)
-                {
                     throw new RequestValidationError(validationResult.Errors);
-                }
+                
                 var pdfByteArray = converterService.ConvertToPdf(input);
 
                 logger.LogInformation("Exiting {method}. POST", nameof(RegisterPdfModule));

@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PdfApp.Contracts", "PdfApp.
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{A433D532-FF18-4D57-AD28-A0AD6D9E66FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfApp.IntegrationTests", "PdfApp.IntegrationTests\PdfApp.IntegrationTests.csproj", "{9057526C-921D-442B-AB4C-C8FA1665036F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PdfApp.IntegrationTests", "PdfApp.IntegrationTests\PdfApp.IntegrationTests.csproj", "{9057526C-921D-442B-AB4C-C8FA1665036F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfApp.UnitTests", "..\PdfApp.UnitTests\PdfApp.UnitTests.csproj", "{A5B34C0A-8867-465D-9936-852071B45C31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{9057526C-921D-442B-AB4C-C8FA1665036F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9057526C-921D-442B-AB4C-C8FA1665036F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9057526C-921D-442B-AB4C-C8FA1665036F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5B34C0A-8867-465D-9936-852071B45C31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5B34C0A-8867-465D-9936-852071B45C31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5B34C0A-8867-465D-9936-852071B45C31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5B34C0A-8867-465D-9936-852071B45C31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +72,7 @@ Global
 		{4D669677-66B3-4670-B9DA-9C5F94644865} = {B9812E6B-03F8-4B27-AE06-E89B4F56A233}
 		{94DE267C-67AE-4403-9E09-D4E1E2AF88EE} = {B9812E6B-03F8-4B27-AE06-E89B4F56A233}
 		{9057526C-921D-442B-AB4C-C8FA1665036F} = {735190B3-99F1-4FB1-A11A-129A02A00994}
+		{A5B34C0A-8867-465D-9936-852071B45C31} = {735190B3-99F1-4FB1-A11A-129A02A00994}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CB43F270-279E-4FCE-BA18-CC7871757499}
