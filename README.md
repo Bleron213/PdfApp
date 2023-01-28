@@ -56,3 +56,4 @@ This software uses the following open source packages:
 - [WkHtmlToPdf-DotNet](https://github.com/HakanL/WkHtmlToPdf-DotNet)
 - [wkhtmltopdf](https://wkhtmltopdf.org/) (internally)
 - [HtmlSanitizer](https://github.com/mganss/HtmlSanitizer)
+- [Moq](https://github.com/moq/moq)
