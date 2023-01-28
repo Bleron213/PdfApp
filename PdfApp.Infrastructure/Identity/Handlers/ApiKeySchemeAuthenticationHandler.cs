@@ -35,7 +35,7 @@ namespace PdfApp.Infrastructure.Identity.Handlers
         {
             // Read the Header
             var config = _httpContextAccessor.HttpContext.RequestServices.GetService<IConfiguration>();
-            var apiKey = config.GetValue<string>($"ApiKey");
+            var apiKey = config.GetValue<string>(API_KEY_HEADER);
 
             if(string.IsNullOrEmpty(apiKey))
                 throw new NotImplementedException("No Api Key was found. This route cannot be accessed");
