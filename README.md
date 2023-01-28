@@ -21,7 +21,8 @@
 * Serilog integration
 * Client SDK 
 * Fully compliant with Dependency Injection
-* Integration tested with Builder pattern
+* Integration tested
+* Unit tested
 
 ## How To Use
 
@@ -55,7 +56,4 @@ This software uses the following open source packages:
 - [WkHtmlToPdf-DotNet](https://github.com/HakanL/WkHtmlToPdf-DotNet)
 - [wkhtmltopdf](https://wkhtmltopdf.org/) (internally)
 - [HtmlSanitizer](https://github.com/mganss/HtmlSanitizer)
-
-## Support
-
-You could hire me :)
+- [Moq](https://github.com/moq/moq)
