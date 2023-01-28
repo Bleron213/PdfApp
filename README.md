@@ -34,6 +34,9 @@ $ git clone https://github.com/Bleron213/PdfApp
 
 # Go into the repository
 $ cd pdfapp
+
+# Run command
+$ dotnet user-secrets "X-API-KEY" "7a8a7cd837b042b58b56617114f4d3d7"
   
 # Run docker-compose
 $ docker-compose up
@@ -44,6 +47,8 @@ https://localhost:7238/swagger/index.html
 Alternatively, Load up the solution in Visual studio and choose either
   - PdfApp.Rest
   - docker-compose
+  
+Remember to initialize X-API-KEY as a dotnet secret inside the PdfApp.Rest project, before running the project in Docker or Windows.
 
 ## Credits
 
