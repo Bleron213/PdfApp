@@ -21,7 +21,8 @@
 * Serilog integration
 * Client SDK 
 * Fully compliant with Dependency Injection
-* Integration tested with Builder pattern
+* Integration tested
+* Unit tested
 
 ## How To Use
 
