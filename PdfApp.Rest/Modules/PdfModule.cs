@@ -43,6 +43,7 @@ namespace PdfApp.Rest.Modules
                     StatusCode = HttpStatusCode.OK
                 });
             }).RequireAuthorization(PolicyConstants.HeaderXApiKeySchemePolicy);
+
         }
     }
 }

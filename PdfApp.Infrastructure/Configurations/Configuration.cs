@@ -10,4 +10,5 @@ namespace PdfApp.Infrastructure.Configurations
     {
         public SanitizerOptions SanitizerOptions { get; set; }
     }
+
 }
