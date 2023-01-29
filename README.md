@@ -26,7 +26,7 @@
 
 ## How To Use
 
-* Clone the git application locally
+* Clone the git repo locally
 
 ```bash
 # Clone this repository
@@ -50,6 +50,11 @@ dotnet user-secrets set "X-API-KEY" "7a8a7cd837b042b58b56617114f4d3d7"
 * Open the solution in Visual Studio 2022
 * Start PdfApp.Rest project. If prompted for a dev certificate use a self-signed certificate
 * Alternatively, start the project using docker-compose
+
+## How To Test
+
+In the solution root, you can find a postman collection. Open it in Postman and you can send test requests.
+Alternatively, you can run Integration or Unit tests inside Visual Studio
   
 ## Credits
 
