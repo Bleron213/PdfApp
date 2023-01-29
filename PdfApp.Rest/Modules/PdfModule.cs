@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using PdfApp.Application.Abstractions.Application;
 using PdfApp.Application.Errors;
@@ -8,6 +9,7 @@ using PdfApp.Contracts.Request;
 using PdfApp.Contracts.Response;
 using PdfApp.Infrastructure.Identity.Constants;
 using System.Net;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace PdfApp.Rest.Modules
 {
@@ -41,7 +43,13 @@ namespace PdfApp.Rest.Modules
                     Succeeded = true,
                     StatusCode = (int)HttpStatusCode.OK
                 });
-            }).RequireAuthorization(PolicyConstants.HeaderXApiKeySchemePolicy);
+            })
+                .WithMetadata(new SwaggerOperationAttribute("This endpoint will convert any base64 encoded HTML string to base64 encoded PDF bytearray and return it back to the caller",""))
+                .WithMetadata(new ProducesResponseTypeAttribute(typeof(Response<PdfOutput>), 200))
+                .WithMetadata(new ProducesResponseTypeAttribute(typeof(Response<string>), 400))
+                .WithMetadata(new ProducesResponseTypeAttribute(typeof(Response<string>), 401))
+                .WithMetadata(new ProducesResponseTypeAttribute(typeof(Response<string>), 500))
+                .RequireAuthorization(PolicyConstants.HeaderXApiKeySchemePolicy);
 
         }
     }
