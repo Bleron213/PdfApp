@@ -49,15 +49,8 @@ dotnet user-secrets set "X-API-KEY" "7a8a7cd837b042b58b56617114f4d3d7"
 
 * Open the solution in Visual Studio 2022
 * Start PdfApp.Rest project. If prompted for a dev certificate use a self-signed certificate
-* Alternatively, start the project using docker-compose.
-
-
-Alternatively, Load up the solution in Visual studio and choose either
-  - PdfApp.Rest
-  - docker-compose
+* Alternatively, start the project using docker-compose
   
-Remember to initialize X-API-KEY as a dotnet secret inside the PdfApp.Rest project, before running the project in Docker or Windows.
-
 ## Credits
 
 This software uses the following open source packages:
