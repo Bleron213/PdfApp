@@ -58,7 +58,7 @@ Alternatively, you can run Integration or Unit tests inside Visual Studio
   
 ## Credits
 
-This software uses the following open source packages:
+This software uses the following open source software in its source code:
 
 - [.NET](https://github.com/dotnet)
 - [Fluent Validation](https://github.com/FluentValidation/FluentValidation)
