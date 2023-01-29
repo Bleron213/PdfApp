@@ -39,7 +39,7 @@ namespace PdfApp.Rest.Modules
                 {
                     Data = new PdfOutput(Convert.ToBase64String(pdfByteArray), pdfByteArray.Length),
                     Succeeded = true,
-                    StatusCode = HttpStatusCode.OK
+                    StatusCode = (int)HttpStatusCode.OK
                 });
             }).RequireAuthorization(PolicyConstants.HeaderXApiKeySchemePolicy);
 
