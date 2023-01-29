@@ -26,30 +26,36 @@
 
 ## How To Use
 
-Clone the git application locally
+* Clone the git repo locally
 
 ```bash
 # Clone this repository
 $ git clone https://github.com/Bleron213/PdfApp
-
-# Go into the repository
-$ cd pdfapp
-
-# Run command
-$ dotnet user-secrets "X-API-KEY" "7a8a7cd837b042b58b56617114f4d3d7"
-  
-# Run docker-compose
-$ docker-compose up
-  
-# View the application at
-https://localhost:7238/swagger/index.html
 ```
-Alternatively, Load up the solution in Visual studio and choose either
-  - PdfApp.Rest
-  - docker-compose
-  
-Remember to initialize X-API-KEY as a dotnet secret inside the PdfApp.Rest project, before running the project in Docker or Windows.
 
+* Navigate to pdfapp.rest repository
+
+```bash
+# Navigate inside pdfapp.rest repository
+cd PdfApp/PdfApp.Rest
+```
+
+* Initiate dotnet user-secret for development purposes
+
+```bash
+# Navigate inside pdfapp.rest repository
+dotnet user-secrets set "X-API-KEY" "7a8a7cd837b042b58b56617114f4d3d7"
+```
+
+* Open the solution in Visual Studio 2022
+* Start PdfApp.Rest project. If prompted for a certificate, use a self-signed development certificate. It is important to have a certificate before running docker-compose.
+* After completing the previous step and having a dev certificate, you can shut down PdfApp.Rest and run <b>docker-compose up</b> at the solution level, or alternatively run docker-compose from the Visual Studio interface.
+
+## How To Test
+
+In the solution root, you can find a postman collection. Open it in Postman and you can send test requests.
+Alternatively, you can run Integration or Unit tests inside Visual Studio
+  
 ## Credits
 
 This software uses the following open source packages:
