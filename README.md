@@ -26,24 +26,32 @@
 
 ## How To Use
 
-Clone the git application locally
+* 1. Clone the git application locally
 
 ```bash
 # Clone this repository
 $ git clone https://github.com/Bleron213/PdfApp
-
-# Go into the repository
-$ cd pdfapp
-
-# Run command
-$ dotnet user-secrets "X-API-KEY" "7a8a7cd837b042b58b56617114f4d3d7"
-  
-# Run docker-compose
-$ docker-compose up
-  
-# View the application at
-https://localhost:7238/swagger/index.html
 ```
+
+* 2. Navigate to pdfapp.rest repository
+
+```bash
+# Navigate inside pdfapp.rest repository
+cd PdfApp.Rest
+```
+
+* 3. Initiate dotnet user-secret for development purposes
+
+```bash
+# Navigate inside pdfapp.rest repository
+dotnet user-secrets set "X-API-KEY" "7a8a7cd837b042b58b56617114f4d3d7"
+```
+
+* 4. Open the solution in Visual Studio 2022
+* 5. Start PdfApp.Rest project. If prompted for a dev certificate use a self-signed certificate
+* 6. Alternatively, start the project using docker-compose.
+
+
 Alternatively, Load up the solution in Visual studio and choose either
   - PdfApp.Rest
   - docker-compose
