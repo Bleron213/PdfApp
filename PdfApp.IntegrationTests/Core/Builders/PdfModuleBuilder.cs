@@ -34,15 +34,16 @@ namespace PdfApp.IntegrationTests.Core.Builders
                 {
                     #region Mocking Authentication and Authorization
 
-                    services.AddAuthentication()
-                    .AddScheme<TestAuthSchemeOptions, TestAuthSchemeHandler>("TestScheme", opts => { });
+                    services
+                        .AddAuthentication()
+                        .AddScheme<TestAuthSchemeOptions, TestAuthSchemeHandler>("TestScheme", opts => { });
 
                     services.AddAuthorization(options =>
                     {
                         var policy = new AuthorizationPolicyBuilder()
-                        .AddAuthenticationSchemes("TestScheme")
-                        .RequireAuthenticatedUser()
-                        .Build();
+                            .AddAuthenticationSchemes("TestScheme")
+                            .RequireAuthenticatedUser()
+                            .Build();
 
                         options.AddPolicy(PolicyConstants.HeaderXApiKeySchemePolicy, policy);
                     });

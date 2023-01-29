@@ -49,9 +49,9 @@ namespace PdfApp.IntegrationTests
         {
             #region Arrange
 
-             bool parsedColorMode = Enum.TryParse<ColorMode>(pageColorMode, out _);
-             bool parsedOrientation = Enum.TryParse<Orientation>(pageOrientation, out _);
-             bool parsedPaperKind = Enum.TryParse<PaperKind>(pagePaperSize, out _);
+            bool parsedColorMode = Enum.TryParse<ColorMode>(pageColorMode, out _);
+            bool parsedOrientation = Enum.TryParse<Orientation>(pageOrientation, out _);
+            bool parsedPaperKind = Enum.TryParse<PaperKind>(pagePaperSize, out _);
 
             var html = "<h1> Hello </h1>";
             var pageMargins = new PageMargins
