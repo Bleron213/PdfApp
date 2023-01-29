@@ -37,7 +37,7 @@ $ git clone https://github.com/Bleron213/PdfApp
 
 ```bash
 # Navigate inside pdfapp.rest repository
-cd PdfApp.Rest
+cd PdfApp/PdfApp.Rest
 ```
 
 * Initiate dotnet user-secret for development purposes
@@ -48,8 +48,8 @@ dotnet user-secrets set "X-API-KEY" "7a8a7cd837b042b58b56617114f4d3d7"
 ```
 
 * Open the solution in Visual Studio 2022
-* Start PdfApp.Rest project. If prompted for a dev certificate use a self-signed certificate
-* Alternatively, start the project using docker-compose
+* Start PdfApp.Rest project. If prompted for a certificate, use a self-signed development certificate. It is important to have a certificate before running docker-compose.
+* After completing the previous step and having a dev certificate, you can shut down PdfApp.Rest and run <b>docker-compose up</b> at the solution level, or alternatively run docker-compose from the Visual Studio interface.
 
 ## How To Test
 
