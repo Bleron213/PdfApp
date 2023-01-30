@@ -19,7 +19,6 @@
 * Cross Platform
 * Global Exception Handling
 * Serilog integration
-* Client SDK 
 * Fully compliant with Dependency Injection
 * Integration tested
 * Unit tested
@@ -48,8 +47,8 @@ dotnet user-secrets set "X-API-KEY" "7a8a7cd837b042b58b56617114f4d3d7"
 ```
 
 * Open the solution in Visual Studio 2022
-* Start PdfApp.Rest project. If prompted for a certificate, use a self-signed development certificate. It is important to have a certificate before running docker-compose.
-* After completing the previous step and having a dev certificate, you can shut down PdfApp.Rest and run <b>docker-compose up</b> at the solution level, or alternatively run docker-compose from the Visual Studio interface.
+* Start PdfApp.Rest project. If prompted for a certificate, use a self-signed development certificate. It is important to have a certificate before running docker-compose. You can consume the PdfApp.Rest that runs on Windows.
+* After completing the previous step and having a dev certificate, you can shut down PdfApp.Rest and run <b>docker-compose up</b> at the solution level, or alternatively run docker-compose from the Visual Studio interface. This will start PdfApp.Rest app on a Linux container.
 
 ## How To Test
 
